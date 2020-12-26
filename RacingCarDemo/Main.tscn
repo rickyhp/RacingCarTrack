@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/Textures/TexturesCom_MetalFloorsBare0063_2_seamless_S.jpg" type="Texture" id=1]
+[ext_resource path="res://Assets/Textures/TexturesCom_RockGrassy0142_2_seamless_S.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/Cars/Caterham/Car.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Textures/TexturesCom_Roads0069_1_seamless_S.jpg" type="Texture" id=3]
+[ext_resource path="res://Assets/Scenes/track-base.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/MeshLibrary.tres" type="MeshLibrary" id=4]
+[ext_resource path="res://indy_car.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -16,55 +17,76 @@ size = Vector2( 100, 100 )
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 50, 1, 50 )
 
-[sub_resource type="SpatialMaterial" id=4]
-params_cull_mode = 2
-albedo_color = Color( 0.333333, 0.137255, 0.137255, 1 )
-albedo_texture = ExtResource( 1 )
-uv1_scale = Vector3( 20, 20, 20 )
-
-[sub_resource type="PlaneMesh" id=5]
-material = SubResource( 4 )
-size = Vector2( 20, 10 )
-
-[sub_resource type="ConcavePolygonShape" id=6]
-data = PoolVector3Array( 10, 0, 5, -10, 0, 5, 10, 0, -5, -10, 0, 5, -10, 0, -5, 10, 0, -5 )
-
-[sub_resource type="Curve3D" id=7]
-_data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -27.2179, 0, -20.503, -2.1814, 0.16714, 0.455866, 2.1814, -0.16714, -0.455866, -17.9632, 0, -26.1117, -0.465429, -0.282651, -0.0850182, 0.465429, 0.282651, 0.0850182, -8.32526, 1.35731, -27.8711, -9.09265, -0.0543766, -10.2181, 9.09265, 0.0543766, 10.2181, 23.211, 0, -23.053, 0.555071, 0, -5.05258, -0.555071, 0, 5.05258, 10.7101, 0, -2.08452, 0, 0, 0, 0, 0, 0, -10.1667, 0, 2.64177, 1.58277, 0, 9.2768, -1.58277, 0, -9.2768, -35.3076, 0, -4.41147, 0, 0, 0, 0, 0, 0, -29.592, 0, -17.9969, 0, 0, 0, 0, 0, 0, -27.5257, 0, -20.2392 ),
-"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 )
-}
-
-[sub_resource type="Shader" id=8]
-code = "shader_type spatial;
-
-uniform sampler2D road_texture;
-uniform sampler2D road_normalmap;
-
-void fragment() {
-	vec2 road_uv = vec2(UV.y, UV.x * 0.25);
-	
-	vec4 color = texture(road_texture, road_uv);
-	NORMALMAP = texture(road_normalmap, road_uv).rgb;
-	ALBEDO = color.rgb;
-	METALLIC = 0.0;
-	ROUGHNESS = 0.8;
-}"
-
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 8 )
-shader_param/road_texture = ExtResource( 3 )
-
-[sub_resource type="Curve3D" id=10]
-_data = {
-"points": PoolVector3Array( -2.50375, -3.08038e-08, 3.90896, 2.50375, 3.08038e-08, -3.90896, 30.0591, 6.55304e-07, 16.1646, -0.701283, -2.67931e-08, -2.91979, 0.701283, 2.67931e-08, 2.91979, 41.1473, 8.95924e-07, 21.883, 3.56687, 6.34733e-08, -1.23921, -3.56687, -6.34733e-08, 1.23921, 32.6574, 7.80432e-07, 32.6974, 0.902042, 4.0186e-08, 5.02038, -0.902042, -4.0186e-08, -5.02038, 21.4262, 5.2788e-07, 24.9546, 0, 0, 0, 0, 0, 0, 28.3996, 6.25705e-07, 16.7264 ),
-"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
-}
-
 [node name="Spatial" type="Spatial"]
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1064.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 1064.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="VBoxContainer/HBoxContainer/ViewportContainer"]
+size = Vector2( 511, 298 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Indycar" parent="VBoxContainer/HBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 5 )]
+transform = Transform( -0.9982, -0.037969, 0.0464228, -0.0381283, 0.99927, -0.00254919, -0.0462923, -0.00431462, -0.998918, -33.4266, 4.75751, -29.5987 )
+
+[node name="Camera" type="Camera" parent="VBoxContainer/HBoxContainer/ViewportContainer/Viewport/Indycar"]
+transform = Transform( 0.0316329, -0.0475116, 0.998369, -0.0399811, 0.99801, 0.0487613, -0.9987, -0.0414585, 0.0296704, 8.35079, 4.01119, 0.129642 )
+current = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 322.0
+margin_right = 1064.0
+margin_bottom = 640.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 1064.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="VBoxContainer/HBoxContainer2/ViewportContainer"]
+size = Vector2( 511, 298 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Classic" parent="VBoxContainer/HBoxContainer2/ViewportContainer/Viewport" instance=ExtResource( 2 )]
+transform = Transform( 0.131818, -0.0610103, 0.989395, 0.00460424, 0.998131, 0.0609357, -0.991264, -0.00347701, 0.131853, -41.458, 4.59244, -30.6662 )
+
+[node name="Camera" type="Camera" parent="VBoxContainer/HBoxContainer2/ViewportContainer/Viewport/Classic"]
+transform = Transform( -0.999214, -0.00961777, -0.0384453, -0.0276773, 0.863679, 0.503282, 0.0283639, 0.503951, -0.863267, -0.169207, 2.30674, -2.81433 )
+current = true
+fov = 112.5
+
 [node name="Ground" type="StaticBody" parent="."]
-visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
 mesh = SubResource( 2 )
@@ -79,86 +101,14 @@ transform = Transform( 0.0167578, -0.99847, 0.0527053, 0.952121, 0.0320289, 0.30
 light_energy = 2.0
 shadow_enabled = true
 
-[node name="Car" type="Spatial" parent="."]
-
-[node name="Car" parent="Car" instance=ExtResource( 2 )]
-transform = Transform( -0.0441674, 4.2526e-05, -0.999024, -0.000167051, 1, 4.99517e-05, 0.999024, 0.000169094, -0.0441674, -11.1328, 0, 2.83342 )
-
-[node name="Position3D" type="Position3D" parent="Car/Car"]
-transform = Transform( 1, 8.73115e-11, 1.00583e-07, 1.16415e-10, 1, -8.18545e-11, -5.96046e-08, 1.47338e-10, 1, -0.139894, -3.96361, 16.4514 )
-
-[node name="Camera" type="InterpolatedCamera" parent="Car/Car/Position3D"]
-transform = Transform( -0.998452, 0.000190582, -0.0555673, -0.0278464, 0.863654, 0.503316, 0.048087, 0.504085, -0.862314, 0.181065, 9.75993, -21.5163 )
-fov = 112.5
-target = NodePath("../Car/Position3D")
-
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 4 )
 cell_size = Vector3( 1, 0.001, 1 )
 data = {
-"cells": PoolIntArray( 65494, 0, 1441858, 65494, 1, 1441858, 65494, 2, 1441858, 65494, 3, 1441858, 65494, 4, 1441858, 65494, 5, 1441858, 65494, 6, 1441858, 65494, 7, 1441858, 65494, 8, 1441858, 65494, 9, 1441858, 65494, 10, 1048642, 65494, 11, 1048642, 65494, 12, 1048642, 65494, 13, 1048642, 65494, 14, 1048642, 65494, 15, 1048642, 65494, 16, 1048642, 65494, 17, 1048642, 65494, 18, 1048642, 13, 19, 90, 4, 20, 90, 7, 20, 90, 18, 20, 85, 10, 22, 90, 0, 23, 90, 2, 23, 90, 21, 23, 85, 65535, 23, 90, 6, 24, 55, 15, 25, 90, 65534, 25, 90, 15, 26, 90, 12, 27, 89, 65535, 29, 90, 6, 30, 90, 11, 30, 90, 9, 31, 90, 30, 31, 85, 19, 32, 90, 30, 32, 85, 31, 32, 85, 65534, 32, 89, 1, 33, 89, 4, 33, 89, 65528, 33, 84, 65530, 33, 84, 4, 34, 89, 24, 34, 89, 24, 35, 89, 14, 36, 89, 9, 37, 89, 18, 37, 89, 30, 37, 85, 65531, 38, 85, 65526, 40, 85, 9, 41, 89, 65494, 65523, 1441858, 65494, 65524, 1441858, 65494, 65525, 1441858, 65494, 65526, 1441858, 65494, 65527, 1441858, 65494, 65528, 1441858, 65494, 65529, 1048642, 65494, 65530, 1048642, 65494, 65531, 1048642, 65494, 65532, 1048642, 65494, 65533, 1048642, 65494, 65534, 1441858, 65494, 65535, 1441858 )
+"cells": PoolIntArray( 13, 19, 90, 4, 20, 90, 7, 20, 90, 18, 20, 85, 10, 22, 90, 0, 23, 90, 2, 23, 90, 21, 23, 85, 65535, 23, 90, 6, 24, 55, 15, 25, 90, 65534, 25, 90, 15, 26, 90, 12, 27, 89, 65535, 29, 90, 6, 30, 90, 11, 30, 90, 9, 31, 90, 19, 32, 90, 65534, 32, 89, 1, 33, 89, 4, 33, 89, 65528, 33, 84, 65530, 33, 84, 4, 34, 89, 24, 34, 89, 24, 35, 89, 14, 36, 89, 9, 37, 89, 18, 37, 89, 65531, 38, 85, 65526, 40, 85, 9, 41, 89 )
 }
 __meta__ = {
 "_editor_clip_": 0
 }
 
-[node name="Slope" type="MeshInstance" parent="."]
-transform = Transform( -0.957267, 0.284771, -0.0504555, 0.285402, 0.958392, -0.00561491, 0.0467572, -0.019775, -0.998711, -15.3268, 3.05604, 24.0528 )
-mesh = SubResource( 5 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Slope"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Slope/StaticBody"]
-shape = SubResource( 6 )
-
-[node name="Track" type="Spatial" parent="."]
-
-[node name="Path" type="Path" parent="Track"]
-curve = SubResource( 7 )
-
-[node name="Road" type="CSGPolygon" parent="Track/Path"]
-use_collision = true
-invert_faces = true
-polygon = PoolVector2Array( -4, 0, -4, 0.1, 4, 0.1, 4, 0 )
-mode = 2
-path_node = NodePath("..")
-path_interval = 1.0
-path_rotation = 2
-path_local = false
-path_continuous_u = false
-path_joined = true
-material = SubResource( 9 )
-
-[node name="CollisionShape" type="CSGPolygon" parent="Track/Path"]
-use_collision = true
-invert_faces = true
-polygon = PoolVector2Array( -4, 0, 4, 0, 4, 2, 8, 2, 8, -1, -8, -1, -8, 2, -4, 2 )
-mode = 2
-path_node = NodePath("..")
-path_interval = 1.0
-path_rotation = 2
-path_local = false
-path_continuous_u = false
-path_joined = true
-
-[node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 0.896486, 1.93673e-08, 0.443071, -1.93673e-08, 1, -4.52472e-09, -0.443071, -4.52472e-09, 0.896486, 0, 0, 0 )
-
-[node name="Path" type="Path" parent="Spatial"]
-transform = Transform( 1, -4.44089e-16, 0, -6.43929e-15, 1, 0, 0, 0, 1, 0, 0, 0 )
-curve = SubResource( 10 )
-
-[node name="Road2" type="CSGPolygon" parent="Spatial/Path"]
-transform = Transform( 0.896486, -1.93673e-08, -0.443071, 1.93673e-08, 1, -4.52473e-09, 0.443071, -4.52472e-09, 0.896486, 0, 0, 0 )
-use_collision = true
-invert_faces = true
-polygon = PoolVector2Array( -4, 0, -4, 0.1, 4, 0.1, 4, 0 )
-mode = 2
-path_node = NodePath("..")
-path_interval = 1.0
-path_rotation = 2
-path_local = false
-path_continuous_u = false
-path_joined = true
-material = SubResource( 9 )
+[node name="Path" parent="." instance=ExtResource( 3 )]
