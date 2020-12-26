@@ -112,3 +112,5 @@ __meta__ = {
 }
 
 [node name="Path" parent="." instance=ExtResource( 3 )]
+lower_ground_width = 12.0
+rail_distance = 1.0
