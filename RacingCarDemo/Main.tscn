@@ -12,7 +12,7 @@ uv1_scale = Vector3( 30, 30, 30 )
 
 [sub_resource type="PlaneMesh" id=2]
 material = SubResource( 1 )
-size = Vector2( 200, 200 )
+size = Vector2( 100, 100 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 50, 1, 50 )
@@ -79,7 +79,7 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Classic" parent="VBoxContainer/HBoxContainer2/ViewportContainer/Viewport" instance=ExtResource( 2 )]
-transform = Transform( 0.131818, -0.0610103, 0.989395, 0.00460424, 0.998131, 0.0609357, -0.991264, -0.00347701, 0.131853, -52.4359, 4.59244, -29.7187 )
+transform = Transform( 0.131818, -0.0610103, 0.989395, 0.00460424, 0.998131, 0.0609357, -0.991264, -0.00347701, 0.131853, -41.458, 4.59244, -30.6662 )
 
 [node name="Camera" type="Camera" parent="VBoxContainer/HBoxContainer2/ViewportContainer/Viewport/Classic"]
 transform = Transform( -0.999214, -0.00961777, -0.0384453, -0.0276773, 0.863679, 0.503282, 0.0283639, 0.503951, -0.863267, -0.169207, 2.30674, -2.81433 )
@@ -105,11 +105,13 @@ shadow_enabled = true
 mesh_library = ExtResource( 4 )
 cell_size = Vector3( 1, 0.001, 1 )
 data = {
-"cells": PoolIntArray( 13, 19, 90, 4, 20, 90, 7, 20, 90, 18, 20, 85, 10, 22, 90, 0, 23, 90, 2, 23, 90, 21, 23, 85, 65535, 23, 90, 6, 24, 55, 15, 25, 90, 65534, 25, 90, 15, 26, 90, 12, 27, 89, 65535, 29, 90, 6, 30, 90, 11, 30, 90, 9, 31, 90, 19, 32, 90, 65534, 32, 89, 1, 33, 89, 4, 33, 89, 65528, 33, 84, 65530, 33, 84, 4, 34, 89, 24, 34, 89, 24, 35, 89, 14, 36, 89, 9, 37, 89, 18, 37, 89, 65531, 38, 85, 65526, 40, 85, 9, 41, 89 )
+"cells": PoolIntArray( 13, 19, 90, 4, 20, 90, 7, 20, 1073741914, 18, 20, 1073741909, 10, 22, 90, 0, 23, 90, 2, 23, 90, 21, 23, 85, 65535, 23, 90, 6, 24, 55, 15, 25, -1610612646, 65534, 25, 90, 15, 26, 90, 12, 27, 89, 65535, 29, 90, 6, 30, 90, 11, 30, 90, 9, 31, 90, 19, 32, 90, 65534, 32, 89, 1, 33, 89, 4, 33, 89, 65528, 33, 84, 65530, 33, 84, 4, 34, 89, 24, 34, 89, 24, 35, 89, 14, 36, 89, 9, 37, 89, 18, 37, 536871001, 65531, 38, 536870997, 65526, 40, 536870997, 9, 41, 536871001 )
 }
 __meta__ = {
 "_editor_clip_": 0
 }
 
 [node name="Path" parent="." instance=ExtResource( 3 )]
-post_distance = 2.0
+lower_ground_width = 12.0
+rail_distance = 1.0
+post_distance = 1.0
