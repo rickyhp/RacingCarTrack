@@ -497,7 +497,7 @@ mesh = SubResource( 16 )
 material/0 = null
 
 [node name="left_front" type="VehicleWheel" parent="."]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -2.237, 0.481, 1.544 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -3.63285, 0.481, 1.544 )
 use_as_steering = true
 wheel_roll_influence = 0.5
 wheel_radius = 0.32
@@ -506,7 +506,7 @@ suspension_stiffness = 60.0
 damping_compression = 0.5
 
 [node name="tire2" type="MeshInstance" parent="left_front"]
-transform = Transform( -1.61058e-07, 1, 5.96047e-08, 0, 5.96046e-08, -1, -1, -1.61058e-07, -9.59981e-15, 0.000203371, 0.00014919, 0.000215054 )
+transform = Transform( -1.61058e-07, 1, 5.96047e-08, 0, 5.96046e-08, -1, -1, -1.61058e-07, -9.59981e-15, 0.000203133, 0.00014919, -1.39564 )
 mesh = SubResource( 17 )
 material/0 = ExtResource( 4 )
 

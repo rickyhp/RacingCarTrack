@@ -29,7 +29,7 @@ damping_relaxation = 0.8
 transform = Transform( 0.0254, 0, 0, 0, 0.0254, 0, 0, 0, 0.0254, 0, 0, 0 )
 
 [node name="left_rear" parent="." index="7"]
-transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.935, 0.37, -1.255 )
+transform = Transform( 1, 0, 0, 0, 1, -1.31134e-07, 0, 1.31134e-07, 1, 0.939625, 0.37, -1.25462 )
 use_as_traction = true
 wheel_roll_influence = 0.5
 wheel_radius = 0.32
