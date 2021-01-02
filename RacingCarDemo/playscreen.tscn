@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://playscreen.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 90
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 42
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 60
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 2.37842
+margin_top = -1.18921
+margin_right = 1282.38
+margin_bottom = 718.811
+color = Color( 0.764706, 0.835294, 0.513726, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameTitle" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 191.127
+margin_top = -26.8568
+margin_right = 1060.13
+margin_bottom = 201.143
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.654902, 0.952941, 0.658824, 1 )
+text = "RocketKart"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Local2PButton" type="Button" parent="."]
+margin_left = 460.0
+margin_top = 285.19
+margin_right = 849.0
+margin_bottom = 355.19
+custom_fonts/font = SubResource( 2 )
+text = "Local 2P"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeTrialButton" type="Button" parent="."]
+margin_left = 458.811
+margin_top = 386.999
+margin_right = 848.811
+margin_bottom = 462.999
+custom_fonts/font = SubResource( 3 )
+text = "Time Trials"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 456.0
+margin_top = 490.0
+margin_right = 854.0
+margin_bottom = 567.0
+custom_fonts/font = SubResource( 6 )
+text = "Back to Menu"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Copyright" type="RichTextLabel" parent="."]
+margin_left = 11.5943
+margin_top = 651.596
+margin_right = 374.594
+margin_bottom = 769.596
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Copyright (c) 2021
+Powered by Godot
+Developers: Harold, Howard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectGamemode" type="RichTextLabel" parent="."]
+margin_left = 326.512
+margin_top = 180.243
+margin_right = 1032.51
+margin_bottom = 277.243
+custom_fonts/normal_font = SubResource( 5 )
+custom_colors/default_color = Color( 0.411765, 0.843137, 0.658824, 1 )
+text = "Select a gamemode:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_BackButton_pressed"]
