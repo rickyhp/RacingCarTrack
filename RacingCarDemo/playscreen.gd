@@ -18,3 +18,7 @@ func _ready():
 
 func _on_BackButton_pressed():
 	get_tree().change_scene("res://menu.tscn")
+
+
+func _on_Local2PButton_pressed():
+	get_tree().change_scene("res://Main.tscn")
