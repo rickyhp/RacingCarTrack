@@ -50,10 +50,10 @@ __meta__ = {
 [node name="GameTitle" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 191.127
-margin_top = -26.8568
-margin_right = 1060.13
-margin_bottom = 201.143
+margin_left = 79.0967
+margin_top = -25.1199
+margin_right = 948.1
+margin_bottom = 202.88
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.654902, 0.952941, 0.658824, 1 )
 text = "RocketKart"
@@ -64,10 +64,10 @@ __meta__ = {
 }
 
 [node name="Local2PButton" type="Button" parent="."]
-margin_left = 460.0
-margin_top = 285.19
-margin_right = 849.0
-margin_bottom = 355.19
+margin_left = 347.97
+margin_top = 286.927
+margin_right = 736.97
+margin_bottom = 356.927
 custom_fonts/font = SubResource( 2 )
 text = "Local 2P"
 __meta__ = {
@@ -75,10 +75,10 @@ __meta__ = {
 }
 
 [node name="TimeTrialButton" type="Button" parent="."]
-margin_left = 458.811
-margin_top = 386.999
-margin_right = 848.811
-margin_bottom = 462.999
+margin_left = 346.781
+margin_top = 388.736
+margin_right = 736.781
+margin_bottom = 464.736
 custom_fonts/font = SubResource( 3 )
 text = "Time Trials"
 __meta__ = {
@@ -86,10 +86,10 @@ __meta__ = {
 }
 
 [node name="BackButton" type="Button" parent="."]
-margin_left = 456.0
-margin_top = 490.0
-margin_right = 854.0
-margin_bottom = 567.0
+margin_left = 343.97
+margin_top = 491.737
+margin_right = 741.97
+margin_bottom = 568.737
 custom_fonts/font = SubResource( 4 )
 text = "Back to Menu"
 script = ExtResource( 2 )
@@ -112,10 +112,10 @@ __meta__ = {
 }
 
 [node name="SelectGamemode" type="RichTextLabel" parent="."]
-margin_left = 326.512
-margin_top = 180.243
-margin_right = 1032.51
-margin_bottom = 277.243
+margin_left = 214.482
+margin_top = 181.98
+margin_right = 920.48
+margin_bottom = 278.98
 custom_fonts/normal_font = SubResource( 6 )
 custom_colors/default_color = Color( 0.411765, 0.843137, 0.658824, 1 )
 text = "Select a gamemode:"
