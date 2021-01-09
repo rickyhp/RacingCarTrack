@@ -17,14 +17,14 @@ font_data = ExtResource( 1 )
 size = 48
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=4]
 size = 42
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 60
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -90,7 +90,7 @@ margin_left = 456.0
 margin_top = 490.0
 margin_right = 854.0
 margin_bottom = 567.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Back to Menu"
 script = ExtResource( 2 )
 __meta__ = {
@@ -102,7 +102,7 @@ margin_left = 11.5943
 margin_top = 651.596
 margin_right = 374.594
 margin_bottom = 769.596
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 5 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Copyright (c) 2021
 Powered by Godot
@@ -116,10 +116,11 @@ margin_left = 326.512
 margin_top = 180.243
 margin_right = 1032.51
 margin_bottom = 277.243
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 6 )
 custom_colors/default_color = Color( 0.411765, 0.843137, 0.658824, 1 )
 text = "Select a gamemode:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Local2PButton" to="BackButton" method="_on_Local2PButton_pressed"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_BackButton_pressed"]
