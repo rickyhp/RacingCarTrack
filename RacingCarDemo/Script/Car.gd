@@ -2,6 +2,7 @@ extends VehicleBody
 
 ############################################################
 # Behaviour values
+const DAMAGE = 15
 
 export var MAX_ENGINE_FORCE = 300.0
 export var MAX_BRAKE_FORCE = 10.0
@@ -33,6 +34,8 @@ export var throttle_mult = 1.0
 export var joy_brake = JOY_ANALOG_L2
 export var brake_mult = 1.0
 
+var bullet_scene = preload("res://Bullet_Scene.tscn")
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -62,6 +65,8 @@ func _physics_process(delta):
 		steer_val = 1.0
 	elif Input.is_action_pressed("ui_right"):
 		steer_val = -1.0
+	if Input.is_action_pressed("fire"):
+		fire_weapon()
 	
 	# check if we need to be in reverse
 	if (had_throttle_or_brake_input == false and brake_val > 0.0 and current_speed_mps < 1.0):
@@ -106,3 +111,14 @@ func _physics_process(delta):
 	
 	# remember where we are
 	last_pos = translation
+
+func fire_weapon():
+	print("fire weapon")
+	var clone = bullet_scene.instance()
+	var scene_root = get_tree().root.get_children()[0]
+	scene_root.add_child(clone)
+
+	clone.global_transform = self.global_transform
+	clone.translate(Vector3(0,1,2))
+	clone.BULLET_DAMAGE = DAMAGE
+	
